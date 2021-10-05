@@ -19,13 +19,13 @@ desi_var = StringVar()
 
 
 def add():
-    if ref_var.get() == 0 or name_var.get() == '' or gender_var.get() == '' or salary_var.get() == '' or email_var.get() == '' or phone_var.get() == '' or desi_var.get() == '':
+    if id_var.get() == 0 or name_var.get() == '' or gender_var.get() == '' or salary_var.get() == '' or email_var.get() == '' or phone_var.get() == '' or desi_var.get() == '':
         messagebox.showerror('Error', 'All fields are required ?')
     else:
         textarea.delete(1.0, END)
         textarea.insert(
             END, '\n==============================================')
-        textarea.insert(END, f'\nEmployee Ref\t\t\t\t{ref_var.get()}')
+        textarea.insert(END, f'\nEmployee Ref\t\t\t\t{id_var.get()}')
         textarea.insert(
             END, '\n==============================================')
         textarea.insert(END, f'\n\nFull Name\t\t\t\t{name_var.get()}')
@@ -41,23 +41,23 @@ def add():
 
 def save():
     data = textarea.get(1.0, END)
-    f1 = open('records/'+str(ref_var.get())+'.txt', 'w')
+    f1 = open('records/'+str(id_var.get())+'.txt', 'w')
     f1.write(data)
     f1.close()
-    messagebox.showinfo('Saved', f'Ref No:{ref_var.get()} Saved Successfully')
+    messagebox.showinfo('Saved', f'Ref No:{id_var.get()} Saved Successfully')
 
 
 def print():
     data = textarea.get(1.0, END)
-    f = 'C:\\Users\\acer\\PycharmProjects\\python Project in GUI\\records\\' + \
-        str(ref_var.get())+'.txt'
+    f = 'C:\\Users\\admin\\Desktop\\IT ALL SEMESTER\\python project\\records' + \
+        str(id_var.get())+'.txt'
     os.startfile(f, 'Print')
 
 
 def reset():
     textarea.delete(1.0, END)
     txt_add.delete(1.0, END)
-    ref_var.set(0)
+    id_var.set(0)
     name_var.set('')
     gender_var.set('')
     desi_var.set('')
@@ -84,7 +84,7 @@ lbl_ref = Label(F1, text='Employee id', font=(
     'times new rommon', 20, 'bold'), fg='black', bg=bg_color)
 lbl_ref.grid(row=0, column=0, padx=30, pady=10)
 txt_ref = Entry(F1, font=('times new rommon', 18, 'bold'),
-                relief=RIDGE, bd=7, textvariable=ref_var)
+                relief=RIDGE, bd=7, textvariable=id_var)
 txt_ref.grid(row=0, column=1, pady=10, sticky='w')
 
 lbl_name = Label(F1, text='Full Name', font=(
